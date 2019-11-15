@@ -21,7 +21,7 @@ public:
 	void update(double dt);
 	void render(sf::RenderWindow& window);
 
-	void setPosition(sf::Vector2f t_pos);
+	void setPosition(sf::Vector2f t_pos);;
 
 	/// <summary>
 	/// @brief Increases the speed by 1, max speed is capped at 100.
@@ -46,7 +46,6 @@ public:
 	/// 
 	/// </summary>
 	void decreaseRotation();
-
 	void increaseTurretRotation();
 	void decreaseTurretRotation();
 	void centreTurret();
@@ -125,7 +124,7 @@ private:
 
 	void adjustRotation();
 	void getPrevious();
-
+	void Brrrt();
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
 	bool m_enableRotation = true;

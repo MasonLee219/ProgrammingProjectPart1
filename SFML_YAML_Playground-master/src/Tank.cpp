@@ -1,6 +1,6 @@
 #include "Tank.h"
 #include "CollisionDetector.h"
-
+#include "Projectile.h"
 Tank::Tank(sf::Texture const& texture, std::vector<sf::Sprite>& wallSprites)
 	: m_texture(texture)
 	, m_wallSprites(wallSprites)
@@ -154,6 +154,7 @@ void Tank::adjustRotation()
 		if (m_rotation > m_previousRotation)
 		{
 			m_rotation = m_previousRotation - 1;
+
 		}
 		else
 		{
@@ -195,7 +196,15 @@ void Tank::deflect()
 void Tank::getPrevious()
 {
 	m_previousPosition = m_tankBase.getPosition();
+}
+
+//fires a projectile
+void Tank::Brrrt()
+{
+	Projectile* p = new Projectile(p->PROJECTILE_SPEED, m_turretRotation);
+
 	
+
 
 }
 
