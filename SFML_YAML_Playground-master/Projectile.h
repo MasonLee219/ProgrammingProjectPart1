@@ -7,10 +7,10 @@ class Projectile
 public:
 	friend class ProjectilePool;
 
-	void init(int t_x, int t_y, int t_xVel, int t_yVel);
+	void init(double t_x, double t_y, double t_xVel, double t_yVel, float t_rotation);
 	void update();
 
-	bool onScreen() const;
+	bool onScreen();
 	
 	static const int SCREEN_WIDTH{ 800 };
 	static const int SCREEN_HEIGHT{ 600 };
@@ -18,9 +18,11 @@ public:
 private:
 	
 	Projectile() = default;
-	int m_x{ -1 };
-	int m_y{ -1 };
+	double m_projectileSpeed{ 500.0 };
+	double m_x{ -1.0 };
+	double m_y{ -1.0};
 
-	int m_xVel{ 0 };
-	int m_yVel{ 0 };
+	double m_xVel{ 0.0 };
+	double m_yVel{ 0.0};
+	double const DEG_TO_RAD = thor::Pi / 180.0f;
 }; 
