@@ -1,6 +1,6 @@
 #include "Tank.h"
 #include "CollisionDetector.h"
-#include "Projectile.h"
+#include "ProjectilePool.h"
 Tank::Tank(sf::Texture const& texture, std::vector<sf::Sprite>& wallSprites)
 	: m_texture(texture)
 	, m_wallSprites(wallSprites)
@@ -201,11 +201,7 @@ void Tank::getPrevious()
 //fires a projectile
 void Tank::Brrrt()
 {
-	Projectile* p = new Projectile(p->PROJECTILE_SPEED, m_turretRotation);
-
 	
-
-
 }
 
 

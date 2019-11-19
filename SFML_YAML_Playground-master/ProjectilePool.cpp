@@ -1,5 +1,7 @@
 #include "ProjectilePool.h"
 
+int ProjectilePool::m_onScreenCount = 0;
+
 Projectile* ProjectilePool::create()
 {
 	//assigns each projectile into the pool to p BY REFERENCE
@@ -8,10 +10,10 @@ Projectile* ProjectilePool::create()
 		if (p.onScreen() == false)
 		{
 			m_onScreenCount++;
-			return &
+			return &p;
 		}
 	}
-
+	return nullptr;
 }
 
 int ProjectilePool::onScreen()

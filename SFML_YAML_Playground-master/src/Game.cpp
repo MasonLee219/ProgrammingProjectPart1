@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
-
+#include "Projectile.h"
+#include "ProjectilePool.h"
 
 // Updates per milliseconds
 static double const MS_PER_UPDATE = 10.0;
@@ -38,8 +39,8 @@ Game::Game()
 
 	if (!m_backgroundTexture.loadFromFile(m_level.m_background.m_fileName));
 	m_background.setTexture(m_backgroundTexture);
-
-
+	
+	m_gameTimeDisplay.setPosition(sf::Vector2f(100, 300));
 	generateWalls();
 }
 
@@ -101,6 +102,7 @@ void Game::processGameEvents(sf::Event& event)
 ////////////////////////////////////////////////////////////
 void Game::update(double dt)
 {
+	m_gameTimeDisplay.setString("Time : " + std::to_string(static_cast<int>(m_gameTime.asSeconds())));
 	m_Tank.update(dt);
 }
 
@@ -108,7 +110,8 @@ void Game::update(double dt)
 void Game::render()
 {
 	m_window.clear(sf::Color(0, 0, 0, 0));
-	m_window.draw(m_background);	
+	m_window.draw(m_background);
+	m_window.draw(m_gameTimeDisplay);
 	//int i = 0;
 
 	/*for (int i = 0; i < m_sprites.size(); i++)

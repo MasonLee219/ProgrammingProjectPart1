@@ -81,9 +81,13 @@ protected:
 
 private:
 	// To store the game level data.
+	
 	Tank m_Tank;
 	LevelData m_level;
 
+	sf::Clock m_gameClock;
+	sf::Time m_gameTime = sf::seconds(60);
+	sf::Text m_gameTimeDisplay;
 
 	sf::Sprite m_background;
 	sf::Texture m_backgroundTexture;
@@ -93,6 +97,8 @@ private:
 	// Wall sprites
 	std::vector<sf::Sprite> m_wallSprites;
 
+	// Projectile sprite
+	std::vector<sf::Sprite> m_projectileSprites;
 	
 	// A texture for the sprite sheet
 	sf::Texture m_spriteSheetTexture;

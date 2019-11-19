@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MathUtility.h"
+#include "ProjectilePool.h"
 
 /// <summary>
 /// @brief A simple tank controller.
@@ -106,6 +107,7 @@ public:
 	}
 private:
 	void initSprites(sf::Vector2f const& pos);
+	ProjectilePool m_projectilePool;
 	sf::Sprite m_tankBase;
 	sf::Sprite m_turret;
 	sf::Texture const& m_texture;
