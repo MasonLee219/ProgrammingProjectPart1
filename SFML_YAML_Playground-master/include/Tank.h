@@ -70,6 +70,8 @@ public:
 /// </summary>
 	void deflect();
 
+	void Brrrt(sf::Event t_event);
+
 	/// <summary>
 	/// @brief Processes control keys and applies speed/rotation as appropriate.
 	/// </summary>
@@ -105,12 +107,15 @@ public:
 			centreTurret();
 		}
 	}
+
+
 private:
 	void initSprites(sf::Vector2f const& pos);
 	ProjectilePool m_projectilePool;
 	sf::Sprite m_tankBase;
 	sf::Sprite m_turret;
 	sf::Texture const& m_texture;
+	
 
 	// A reference to the container of wall sprites.
 	std::vector<sf::Sprite>& m_wallSprites;
@@ -127,7 +132,7 @@ private:
 	void adjustRotation();
 	void getPrevious();
 	bool checkFireReady();
-	void Brrrt(sf::Event t_event);
+	
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
 

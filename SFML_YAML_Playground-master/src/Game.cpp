@@ -102,8 +102,19 @@ void Game::processGameEvents(sf::Event& event)
 ////////////////////////////////////////////////////////////
 void Game::update(double dt)
 {
+	sf::Event event;
+
 	m_gameTimeDisplay.setString("Time : " + std::to_string(static_cast<int>(m_gameTime.asSeconds())));
 	m_Tank.update(dt);
+
+	while (m_window.pollEvent(event))
+	{
+		m_Tank.Brrrt(event.type == event.MouseButtonPressed);
+		{
+			
+		}
+	}
+	
 }
 
 ////////////////////////////////////////////////////////////

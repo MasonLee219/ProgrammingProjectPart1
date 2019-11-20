@@ -1,6 +1,10 @@
 #include "Tank.h"
 #include "CollisionDetector.h"
 #include "ProjectilePool.h"
+#include "Projectile.h"
+#include <iostream>
+
+using namespace std;
 Tank::Tank(sf::Texture const& texture, std::vector<sf::Sprite>& wallSprites)
 	: m_texture(texture)
 	, m_wallSprites(wallSprites)
@@ -33,6 +37,7 @@ void Tank::update(double dt)
 	m_turret.setPosition(m_tankBase.getPosition());
 
 	getPrevious();
+	
 	
 	m_speed *= 0.99;
 	
@@ -215,6 +220,7 @@ bool Tank::checkFireReady()
 //fires a projectile
 void Tank::Brrrt(sf::Event t_event)
 {
+	cout << "BRRRRRRT" << endl;
 	if (checkFireReady())
 	{
 		if (sf::Mouse::Left == t_event.mouseButton.button)
@@ -222,7 +228,7 @@ void Tank::Brrrt(sf::Event t_event)
 			Projectile* p = m_projectilePool.create();
 			if (nullptr != p)
 			{
-				p->init(m_turret.getPosition().x, m_turret.getPosition().y, );
+				p->init(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
 			}
 			delete p;
 		}

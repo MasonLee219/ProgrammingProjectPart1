@@ -1,6 +1,6 @@
 #include "Projectile.h"
 
-void Projectile::init(double t_x, double t_y, double t_xVel, double t_yVel, float t_rotation)
+void Projectile::init(double t_x, double t_y, float t_rotation)
 {
 	m_x = t_x;
 	m_y = t_y;
@@ -12,4 +12,9 @@ void Projectile::update()
 {
 	m_x += m_xVel;
 	m_y += m_yVel;
+}
+
+bool Projectile::onScreen()
+{
+	return false;
 }
