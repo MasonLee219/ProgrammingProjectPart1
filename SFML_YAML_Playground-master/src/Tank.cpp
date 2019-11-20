@@ -218,19 +218,18 @@ bool Tank::checkFireReady()
 
 }
 //fires a projectile
-void Tank::Brrrt(sf::Event t_event)
+void Tank::Brrrt()
 {
 	cout << "BRRRRRRT" << endl;
 	if (checkFireReady())
 	{
-		if (sf::Mouse::Left == t_event.mouseButton.button)
 		{
-			Projectile* p = m_projectilePool.create();
+			Projectile* p;
 			if (nullptr != p)
 			{
-				p->init(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
+				p = m_projectilePool.create(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
 			}
-			delete p;
+			//delete p;
 		}
 	}
 

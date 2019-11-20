@@ -3,7 +3,7 @@
 class ProjectilePool
 {
 public:
-	Projectile* create();
+	Projectile* create(double t_x, double t_y, float t_rotation);
 
 private:
 	Projectile m_projectiles[20];

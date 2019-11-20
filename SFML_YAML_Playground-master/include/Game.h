@@ -84,7 +84,7 @@ private:
 	
 	Tank m_Tank;
 	LevelData m_level;
-
+	ProjectilePool m_projectilePool;
 	sf::Clock m_gameClock;
 	sf::Time m_gameTime = sf::seconds(60);
 	sf::Text m_gameTimeDisplay;

@@ -22,7 +22,7 @@ public:
 	void update(double dt);
 	void render(sf::RenderWindow& window);
 
-	void setPosition(sf::Vector2f t_pos);;
+	void setPosition(sf::Vector2f t_pos);
 
 	/// <summary>
 	/// @brief Increases the speed by 1, max speed is capped at 100.
@@ -70,7 +70,7 @@ public:
 /// </summary>
 	void deflect();
 
-	void Brrrt(sf::Event t_event);
+	void Brrrt();
 
 	/// <summary>
 	/// @brief Processes control keys and applies speed/rotation as appropriate.
@@ -105,6 +105,10 @@ public:
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
 			centreTurret();
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			Brrrt();
 		}
 	}
 

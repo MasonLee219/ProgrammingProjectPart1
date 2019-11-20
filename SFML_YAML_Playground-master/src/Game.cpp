@@ -109,7 +109,7 @@ void Game::update(double dt)
 
 	while (m_window.pollEvent(event))
 	{
-		m_Tank.Brrrt(event.type == event.MouseButtonPressed);
+		//m_Tank.Brrrt(event.type == event.MouseButtonPressed);
 		{
 			
 		}
