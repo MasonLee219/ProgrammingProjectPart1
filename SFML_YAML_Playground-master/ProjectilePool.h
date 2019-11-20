@@ -3,7 +3,7 @@
 class ProjectilePool
 {
 public:
-	Projectile* create(double t_x, double t_y, double t_xVel, double t_yVel, float t_rotation);
+	Projectile* create();
 
 	static int onScreen();
 

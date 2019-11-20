@@ -198,10 +198,36 @@ void Tank::getPrevious()
 	m_previousPosition = m_tankBase.getPosition();
 }
 
-//fires a projectile
-void Tank::Brrrt()
+bool Tank::checkFireReady()
 {
-	
+	if (m_triggerTimer >= m_FIRE_RATE)
+	{
+		m_triggerTimer = 0;
+		return true;
+	}
+	else
+	{
+		m_triggerTimer++;
+		return false;
+	}
+
+}
+//fires a projectile
+void Tank::Brrrt(sf::Event t_event)
+{
+	if (checkFireReady())
+	{
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+		{
+			Projectile* p = m_projectilePool.create();
+			if (nullptr != p)
+			{
+				p->init(m_turret.getPosition().x, m_turret.getPosition().y, );
+			}
+			delete p;
+		}
+	}
+
 }
 
 

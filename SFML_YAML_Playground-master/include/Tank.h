@@ -126,8 +126,12 @@ private:
 
 	void adjustRotation();
 	void getPrevious();
-	void Brrrt();
+	bool checkFireReady();
+	void Brrrt(sf::Event t_event);
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
+
+	int m_triggerTimer = { 0 };
+	const int m_FIRE_RATE{ 90 };
 	bool m_enableRotation = true;
 };
