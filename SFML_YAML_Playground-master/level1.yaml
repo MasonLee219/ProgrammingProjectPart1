@@ -1,7 +1,10 @@
 background:
    file: ./resources/images/Background.jpg #Sample comment
 tank:
-   position: {x: 850, y: 100}
+   position1: {x: 100, y: 100}
+   position2: {x: 100, y: 800}
+   position3: {x: 1300, y: 100}
+   position4: {x: 1300, y: 800}
 obstacles: 
    - type: wall
      position: {x: 100, y: 660}
@@ -11,4 +14,15 @@ obstacles:
      rotation: 10
    - type: wall
      position: {x: 167, y: 670}
+     rotation: 20
+
+targets:
+   - type: targets
+     position: {x: 327, y: 427}
+     rotation: 20
+   - type: targets
+     position: {x: 957, y: 670}
+     rotation: 20
+   - type: targets
+     position: {x: 167, y: 80}
      rotation: 20

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "MathUtility.h"
 #include "ProjectilePool.h"
+#include "LevelLoader.h"
 
 /// <summary>
 /// @brief A simple tank controller.
@@ -72,6 +73,8 @@ public:
 
 	void Brrrt();
 
+	void setTankPos(LevelData level1);
+
 	/// <summary>
 	/// @brief Processes control keys and applies speed/rotation as appropriate.
 	/// </summary>
@@ -137,6 +140,7 @@ private:
 	void getPrevious();
 	bool checkFireReady();
 	
+	sf::Vector2f m_spawnPositions[4];
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
 

@@ -35,7 +35,7 @@ Game::Game()
 
 	m_gameTimeDisplay.setFont(font);
 
-	m_Tank.setPosition(m_level.m_tank.m_position);
+	m_Tank.setPosition(m_level);
 	//if (!m_playerTexture.loadFromFile("./resources/images/E-100.png"));
 	//m_player.setTexture(m_playerTexture);
 
@@ -49,6 +49,7 @@ Game::Game()
 	m_background.setTexture(m_backgroundTexture);	
 	m_gameTimeDisplay.setPosition(100, 300);
 	generateWalls();
+	generateTargets();
 }
 
 ////////////////////////////////////////////////////////////
@@ -113,7 +114,7 @@ void Game::update(double dt)
 	m_gameTime = m_gameClock.getElapsedTime();
 	m_gameTimeDisplay.setString("Time : " + std::to_string(60 - static_cast<int>(m_gameTime.asSeconds())));
 	
-	m_Tank.update(dt, m_wallSprites);
+	m_Tank.update(dt);
 	
 }
 
@@ -140,6 +141,11 @@ void Game::render()
 	{
 		m_window.draw(sprite);
 	}
+
+	for (sf::Sprite& sprite : m_targetSprites)
+	{
+		m_window.draw(sprite); 
+	}
 	m_Tank.render(m_window);
 	m_window.display();
 }
@@ -158,6 +164,23 @@ void Game::generateWalls()
 		sprite.setPosition(obstacle.m_position);
 		sprite.setRotation(obstacle.m_rotation);
 		m_wallSprites.push_back(sprite);
+	}
+}
+
+//generates the targets onto the map
+void Game::generateTargets()
+{	
+	//sets the target rect
+	sf::IntRect targetRect(98, 89, 100, 100);
+	for (TargetData const& target : m_level.m_targets)
+	{
+		sf::Sprite sprite;
+		sprite.setTexture(m_spriteSheetTexture);
+		sprite.setTextureRect(targetRect);
+		sprite.setOrigin(targetRect.width / 2.0, targetRect.height / 2.0);
+		sprite.setPosition(target.m_position);
+		sprite.setRotation(target.m_rotation);
+		m_targetSprites.push_back(sprite);
 	}
 }
 

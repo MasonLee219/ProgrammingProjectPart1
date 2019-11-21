@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include <iostream>
 
+
 using namespace std;
 Tank::Tank(sf::Texture const& texture, std::vector<sf::Sprite>& wallSprites)
 	: m_texture(texture)
@@ -37,7 +38,7 @@ void Tank::update(double dt)
 	m_turret.setPosition(m_tankBase.getPosition());
 
 	getPrevious();
-	m_projectilePool.update(dt, m_wallSprites);
+	m_projectilePool.update(dt, &m_wallSprites);
 	
 	m_speed *= 0.99;
 	
@@ -237,6 +238,20 @@ void Tank::Brrrt()
 		
 	//}
 
+}
+
+void Tank::setTankPos(LevelData level1)
+{
+	m_spawnPositions[1] = level1.m_tank.m_position1;
+	m_spawnPositions[2] = level1.m_tank.m_position2;
+	m_spawnPositions[3] = level1.m_tank.m_position3;
+	m_spawnPositions[4] = level1.m_tank.m_position4;
+
+	//generates a random number and sets the tank position to that
+	int randomnumber = rand() % 4;
+
+	m_tankBase.setPosition(m_spawnPositions[randomnumber]);
+	m_turret.setPosition(m_spawnPositions[randomnumber]);
 }
 
 

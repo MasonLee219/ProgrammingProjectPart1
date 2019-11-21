@@ -76,6 +76,8 @@ protected:
 	/// </summary>
 	void generateWalls();
 
+	void generateTargets();
+
 	// main window
 	sf::RenderWindow m_window;
 
@@ -90,11 +92,6 @@ private:
 
 	sf::Font font;
 
-	
-
-	
-
-	
 	sf::Text m_gameTimeDisplay;
 
 	sf::Sprite m_background;
@@ -104,6 +101,10 @@ private:
 
 	// Wall sprites
 	std::vector<sf::Sprite> m_wallSprites;
+
+	//Target sprite and texture
+	sf::Texture m_targetTexture;
+	std::vector<sf::Sprite> m_targetSprites;
 
 	// Projectile sprite
 	std::vector<sf::Sprite> m_projectileSprites;

@@ -8,7 +8,13 @@ void getObstacleData(const YAML::Node& obstacleNode, ObstacleData& obstacle)
 	obstacle.m_position.y = obstacleNode["position"]["y"].as<float>();
 	obstacle.m_rotation = obstacleNode["rotation"].as<double>();
 }
-
+void getTargetData(const YAML::Node& targetNode, TargetData& target)
+{
+	target.m_type = targetNode["type"].as<std::string>();
+	target.m_position.x = targetNode["position"]["x"].as<float>();
+	target.m_position.y = targetNode["position"]["y"].as<float>();
+	target.m_rotation = targetNode["rotation"].as<double>();
+}
 // The function immediately below is the logical equivalent to the above.
 /*void operator >> (const YAML::Node& obstacleNode, ObstacleData& obstacle)
 {
@@ -26,14 +32,15 @@ void getBackgroundName(const YAML::Node& backgroundNode, BackgroundData& backgro
 void getTankData(const YAML::Node& t_tankNode, TankData& t_tankData)
 {
 	//tank:
-	//	position: {x: 850, y: 100}
-	//passes the Tank's position from the yaml file as an int
-	int x = t_tankNode["position"]["x"].as<int>();
-	int y = t_tankNode["position"]["y"].as<int>();
-
-	//Stores the x and y values
-	t_tankData.m_position.x = x;
-	t_tankData.m_position.y = y;
+	//passes the Tank's spawnpoints from the yaml file as an int
+	t_tankData.m_position1.x = t_tankNode["position1"]["x"].as<int>();
+	t_tankData.m_position1.y = t_tankNode["position1"]["x"].as<int>();
+	t_tankData.m_position2.x = t_tankNode["position2"]["x"].as<int>();
+	t_tankData.m_position2.y = t_tankNode["position2"]["x"].as<int>();
+	t_tankData.m_position3.x = t_tankNode["position3"]["x"].as<int>();
+	t_tankData.m_position3.y = t_tankNode["position3"]["y"].as<int>();
+	t_tankData.m_position4.x = t_tankNode["position4"]["x"].as<int>();
+	t_tankData.m_position4.y = t_tankNode["position4"]["y"].as<int>();
 }
 
 // The function immediately below is the logical equivalent to the above.
@@ -65,6 +72,15 @@ void readYAMLFile(const YAML::Node& levelNode, LevelData& level)
 		getObstacleData(obstacleNode, obstacle);
 		// obstacleNode >> obstacle;
 		level.m_obstacles.push_back(obstacle);
+	}
+
+	const YAML::Node& targetNode = levelNode["targets"].as<YAML::Node>();
+	for (const YAML::Node& targetNode : targetNode)
+	{
+		TargetData target;
+		getTargetData(targetNode, target);
+		// obstacleNode >> obstacle;
+		level.m_obstacles.push_back(target);
 	}
 }
 
