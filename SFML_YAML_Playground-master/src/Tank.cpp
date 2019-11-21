@@ -37,7 +37,7 @@ void Tank::update(double dt)
 	m_turret.setPosition(m_tankBase.getPosition());
 
 	getPrevious();
-	
+	m_projectilePool.update(dt, m_wallSprites);
 	
 	m_speed *= 0.99;
 	

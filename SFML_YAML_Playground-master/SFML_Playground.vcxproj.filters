@@ -59,8 +59,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="ProjectilePool.cpp" />
     <ClCompile Include="src\CollisionDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectilePool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

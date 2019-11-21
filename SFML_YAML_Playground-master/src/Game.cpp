@@ -113,7 +113,7 @@ void Game::update(double dt)
 	m_gameTime = m_gameClock.getElapsedTime();
 	m_gameTimeDisplay.setString("Time : " + std::to_string(60 - static_cast<int>(m_gameTime.asSeconds())));
 	
-	m_Tank.update(dt);
+	m_Tank.update(dt, m_wallSprites);
 	
 }
 

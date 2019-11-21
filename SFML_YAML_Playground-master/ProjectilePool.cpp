@@ -30,3 +30,14 @@ void ProjectilePool::render(sf::RenderWindow& window)
 		}
 	}
 }
+
+void ProjectilePool::update(double dt, std::vector<sf::Sprite>* wallSprites)
+{
+	for (int i = 0; i < 20; i++)
+	{
+		if (m_projectiles[i].onScreen())
+		{
+			m_projectiles[i].update(dt, wallSprites);
+		}
+	}
+}
