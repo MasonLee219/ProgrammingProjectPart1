@@ -49,6 +49,7 @@ void Tank::render(sf::RenderWindow& window)
 {
 	window.draw(m_tankBase);
 	window.draw(m_turret);
+	m_projectilePool.render(window);
 }
 
 
@@ -220,18 +221,21 @@ bool Tank::checkFireReady()
 //fires a projectile
 void Tank::Brrrt()
 {
-	cout << "BRRRRRRT" << endl;
-	if (checkFireReady())
-	{
-		{
-			Projectile* p;
-			if (nullptr != p)
-			{
-				p = m_projectilePool.create(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
-			}
-			//delete p;
-		}
-	}
+	
+	//if (checkFireReady())
+	//{
+		
+		Projectile* p = nullptr;
+		//if (nullptr != p)
+		//{
+			cout << "BRRRRRRT" << endl;
+			m_projectilePool.create(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
+			/*p->loadTexture();
+			p->initSprite();*/
+		/*}*/
+		//delete p;
+		
+	//}
 
 }
 

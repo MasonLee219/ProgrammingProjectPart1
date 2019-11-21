@@ -106,7 +106,7 @@ public:
 		{
 			centreTurret();
 		}
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			Brrrt();
 		}

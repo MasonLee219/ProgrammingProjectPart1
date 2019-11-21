@@ -27,6 +27,14 @@ Game::Game()
 		throw e;
 	}
 
+
+	if (!font.loadFromFile("Oswald-Regular.ttf"))
+	{
+		//error
+	}
+
+	m_gameTimeDisplay.setFont(font);
+
 	m_Tank.setPosition(m_level.m_tank.m_position);
 	//if (!m_playerTexture.loadFromFile("./resources/images/E-100.png"));
 	//m_player.setTexture(m_playerTexture);
@@ -38,9 +46,8 @@ Game::Game()
 	}
 
 	if (!m_backgroundTexture.loadFromFile(m_level.m_background.m_fileName));
-	m_background.setTexture(m_backgroundTexture);
-	
-	m_gameTimeDisplay.setPosition(sf::Vector2f(100, 300));
+	m_background.setTexture(m_backgroundTexture);	
+	m_gameTimeDisplay.setPosition(100, 300);
 	generateWalls();
 }
 
@@ -103,17 +110,10 @@ void Game::processGameEvents(sf::Event& event)
 void Game::update(double dt)
 {
 	sf::Event event;
-
-	m_gameTimeDisplay.setString("Time : " + std::to_string(static_cast<int>(m_gameTime.asSeconds())));
+	m_gameTime = m_gameClock.getElapsedTime();
+	m_gameTimeDisplay.setString("Time : " + std::to_string(60 - static_cast<int>(m_gameTime.asSeconds())));
+	
 	m_Tank.update(dt);
-
-	while (m_window.pollEvent(event))
-	{
-		//m_Tank.Brrrt(event.type == event.MouseButtonPressed);
-		{
-			
-		}
-	}
 	
 }
 

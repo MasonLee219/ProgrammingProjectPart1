@@ -67,7 +67,7 @@ protected:
 	/// @brief Handles all user input.
 	/// </summary>
 	/// <param name="event">system event</param>
-	void processGameEvents(sf::Event & event);
+	void processGameEvents(sf::Event& event);
 
 	/// <summary>
 	/// @brief Creates the wall sprites and loads them into a vector.
@@ -81,12 +81,20 @@ protected:
 
 private:
 	// To store the game level data.
-	
+
 	Tank m_Tank;
 	LevelData m_level;
 	ProjectilePool m_projectilePool;
 	sf::Clock m_gameClock;
-	sf::Time m_gameTime = sf::seconds(60);
+	sf::Time m_gameTime = sf::seconds(0);
+
+	sf::Font font;
+
+	
+
+	
+
+	
 	sf::Text m_gameTimeDisplay;
 
 	sf::Sprite m_background;
