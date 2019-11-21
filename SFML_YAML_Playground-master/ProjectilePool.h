@@ -3,6 +3,7 @@
 class ProjectilePool
 {
 public:
+	ProjectilePool();
 	Projectile* create(double t_x, double t_y, float t_rotation);
 	void render(sf::RenderWindow& window);
 private:

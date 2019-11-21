@@ -1,6 +1,11 @@
 #include "ProjectilePool.h"
 
 
+ProjectilePool::ProjectilePool()
+{
+
+}
+
 Projectile* ProjectilePool::create(double t_x, double t_y, float t_rotation)
 {
 	//assigns each projectile into the pool to p BY REFERENCE
