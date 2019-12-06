@@ -44,13 +44,16 @@ void Tank::update(double dt)
 	
 
 	m_speed = std::clamp(m_speed, -50.0, 50.0);
+	m_updateProjectile(dt);
 }
 
 void Tank::render(sf::RenderWindow& window)
 {
+
+	window.draw(m_projectile);
 	window.draw(m_tankBase);
 	window.draw(m_turret);
-	m_projectilePool.render(window);
+
 }
 
 
@@ -70,6 +73,12 @@ void Tank::initSprites(sf::Vector2f const& pos)
 	m_turret.setOrigin(turretRect.width / 3.0, turretRect.height / 2.0);
 	m_turret.setPosition(pos);
 
+	m_projectile.setTexture(m_texture);
+	sf::IntRect projectileRect(7, 177, 6, 9);
+	m_projectile.setTextureRect(projectileRect);
+	m_projectile.setOrigin(projectileRect.width / 1.5, projectileRect.height / 2);
+	m_projectile.setPosition(pos);
+	
 }
 
 ////////////////////////////////////////////////////////////
@@ -220,32 +229,27 @@ bool Tank::checkFireReady()
 
 }
 //fires a projectile
-void Tank::Brrrt()
+void Tank::m_updateProjectile(double dt)
 {
-	
-	//if (checkFireReady())
-	//{
-		
-		Projectile* p = nullptr;
-		//if (nullptr != p)
-		//{
-			cout << "BRRRRRRT" << endl;
-			m_projectilePool.create(m_turret.getPosition().x, m_turret.getPosition().y, m_turret.getRotation());
-			/*p->loadTexture();
-			p->initSprite();*/
-		/*}*/
-		//delete p;
-		
-	//}
+	if (readyToFire)
+	{
+		m_projectile.setPosition(m_tankBase.getPosition());
+		m_projectile.setRotation(m_turret.getRotation() -90);
+		m_projectileUnitVec = thor::rotatedVector(sf::Vector2f(1, 0), m_turret.getRotation());
+		m_projectileUnitVec.x* m_projectileSpeed* (dt / 1000);
+		m_projectileUnitVec.y* m_projectileSpeed* (dt / 1000);
+	}
+	m_projectile.move(m_projectileUnitVec);	
 
 }
 
 void Tank::setTankPos(LevelData level1)
 {
-	m_spawnPositions[1] = level1.m_tank.m_position1;
-	m_spawnPositions[2] = level1.m_tank.m_position2;
-	m_spawnPositions[3] = level1.m_tank.m_position3;
-	m_spawnPositions[4] = level1.m_tank.m_position4;
+	m_spawnPositions[0] = level1.m_tank.m_position1;
+	m_spawnPositions[1] = level1.m_tank.m_position2;
+	m_spawnPositions[2] = level1.m_tank.m_position3;
+	m_spawnPositions[3] = level1.m_tank.m_position4;
+	
 
 	//generates a random number and sets the tank position to that
 	srand(time(NULL));

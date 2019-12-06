@@ -4,6 +4,8 @@
 #include "ProjectilePool.h"
 #include "LevelLoader.h"
 #include <ctime>
+
+using namespace std;
 /// <summary>
 /// @brief A simple tank controller.
 /// 
@@ -71,7 +73,7 @@ public:
 /// </summary>
 	void deflect();
 
-	void Brrrt();
+	void m_updateProjectile(double dt);
 
 	void setTankPos(LevelData level1);
 
@@ -111,7 +113,11 @@ public:
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-			Brrrt();
+			if (readyToFire)
+			{
+				m_projectileUnitVec = sf::Vector2f(1, 0);
+				std::cout << "BRRRRT" << endl;
+			}
 		}
 	}
 
@@ -119,6 +125,7 @@ public:
 private:
 	void initSprites(sf::Vector2f const& pos);
 	ProjectilePool m_projectilePool;
+	
 	sf::Sprite m_tankBase;
 	sf::Sprite m_turret;
 	sf::Texture const& m_texture;
@@ -145,7 +152,11 @@ private:
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
 
+	sf::Sprite m_projectile;
+	sf::Vector2f m_projectileUnitVec{ -1, -1 };
 	int m_triggerTimer = { 0 };
 	const int m_FIRE_RATE{ 90 };
 	bool m_enableRotation = true;
+	double const m_projectileSpeed = { 90.0 };
+	bool readyToFire = true;
 };
