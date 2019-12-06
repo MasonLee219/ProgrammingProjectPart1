@@ -80,7 +80,7 @@ void readYAMLFile(const YAML::Node& levelNode, LevelData& level)
 		TargetData target;
 		getTargetData(targetNode, target);
 		// obstacleNode >> obstacle;
-		level.m_obstacles.push_back(target);
+		level.m_targets.push_back(target);
 	}
 }
 

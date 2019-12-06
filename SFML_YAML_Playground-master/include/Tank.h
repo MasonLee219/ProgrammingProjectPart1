@@ -3,7 +3,7 @@
 #include "MathUtility.h"
 #include "ProjectilePool.h"
 #include "LevelLoader.h"
-
+#include <ctime>
 /// <summary>
 /// @brief A simple tank controller.
 /// 
@@ -141,6 +141,7 @@ private:
 	bool checkFireReady();
 	
 	sf::Vector2f m_spawnPositions[4];
+	sf::Vector2f m_spawnPosition;
 	sf::Vector2f m_previousPosition;
 	double m_previousSpeed{ 0.0 };
 

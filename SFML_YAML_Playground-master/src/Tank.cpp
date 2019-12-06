@@ -248,6 +248,7 @@ void Tank::setTankPos(LevelData level1)
 	m_spawnPositions[4] = level1.m_tank.m_position4;
 
 	//generates a random number and sets the tank position to that
+	srand(time(NULL));
 	int randomnumber = rand() % 4;
 
 	m_tankBase.setPosition(m_spawnPositions[randomnumber]);

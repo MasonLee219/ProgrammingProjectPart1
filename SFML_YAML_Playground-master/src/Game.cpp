@@ -35,7 +35,7 @@ Game::Game()
 
 	m_gameTimeDisplay.setFont(font);
 
-	m_Tank.setPosition(m_level);
+	m_Tank.setTankPos(m_level);
 	//if (!m_playerTexture.loadFromFile("./resources/images/E-100.png"));
 	//m_player.setTexture(m_playerTexture);
 
