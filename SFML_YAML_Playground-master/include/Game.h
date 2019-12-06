@@ -83,7 +83,6 @@ protected:
 
 private:
 	// To store the game level data.
-
 	Tank m_Tank;
 	LevelData m_level;
 	ProjectilePool m_projectilePool;
@@ -93,6 +92,8 @@ private:
 	sf::Font font;
 
 	sf::Text m_gameTimeDisplay;
+	sf::Text m_gameScoreDisplay;
+	int m_gameScore = 0;
 
 	sf::Sprite m_background;
 	sf::Texture m_backgroundTexture;

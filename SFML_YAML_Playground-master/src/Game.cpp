@@ -34,6 +34,7 @@ Game::Game()
 	}
 
 	m_gameTimeDisplay.setFont(font);
+	m_gameScoreDisplay.setFont(font);
 
 	m_Tank.setTankPos(m_level);
 	//if (!m_playerTexture.loadFromFile("./resources/images/E-100.png"));
@@ -115,6 +116,7 @@ void Game::update(double dt)
 	m_gameTimeDisplay.setString("Time : " + std::to_string(60 - static_cast<int>(m_gameTime.asSeconds())));
 	
 	m_Tank.update(dt);
+	m_gameScoreDisplay.setString("Score: " + std::to_string(static_cast<int>(m_gameScore)));
 	
 }
 
@@ -124,18 +126,12 @@ void Game::render()
 	m_window.clear(sf::Color(0, 0, 0, 0));
 	m_window.draw(m_background);
 	m_window.draw(m_gameTimeDisplay);
-	//int i = 0;
-
-	/*for (int i = 0; i < m_sprites.size(); i++)
-	{
-		m_window.draw(m_sprites.at(i));
-	}*/
+	m_window.draw(m_gameScoreDisplay);
+	
 
 	for (sf::Sprite & sprite : m_sprites)
 	{
-		//m_sprites.at(i), where i is the amount of sprites drawn
 		m_window.draw(sprite);
-		//i++;
 	}
 	for (sf::Sprite& sprite : m_wallSprites)
 	{

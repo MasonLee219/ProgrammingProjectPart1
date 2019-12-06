@@ -231,13 +231,21 @@ bool Tank::checkFireReady()
 //fires a projectile
 void Tank::m_updateProjectile(double dt)
 {
-	if (readyToFire)
+	if (readyToFire && m_projectileUnitVec != sf::Vector2f(-1, -1))
 	{
 		m_projectile.setPosition(m_tankBase.getPosition());
-		m_projectile.setRotation(m_turret.getRotation() -90);
+		m_projectile.setRotation(m_turret.getRotation() - 90);
 		m_projectileUnitVec = thor::rotatedVector(sf::Vector2f(1, 0), m_turret.getRotation());
 		m_projectileUnitVec.x* m_projectileSpeed* (dt / 1000);
 		m_projectileUnitVec.y* m_projectileSpeed* (dt / 1000);
+		readyToFire = false;
+	}
+
+	if (m_projectile.getPosition().x > 1440 || m_projectile.getPosition().x < 0 || m_projectile.getPosition().y > 900 || m_projectile.getPosition().y < 0)
+	{
+		m_projectile.setPosition(-1000, -1000);
+		m_projectileUnitVec = sf::Vector2f(-1, -1);
+		readyToFire = true;
 	}
 	m_projectile.move(m_projectileUnitVec);	
 

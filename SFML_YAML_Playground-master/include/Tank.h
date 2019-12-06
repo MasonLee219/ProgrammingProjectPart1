@@ -158,5 +158,5 @@ private:
 	const int m_FIRE_RATE{ 90 };
 	bool m_enableRotation = true;
 	double const m_projectileSpeed = { 90.0 };
-	bool readyToFire = true;
+	bool readyToFire{true};
 };
